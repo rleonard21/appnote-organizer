@@ -21,6 +21,9 @@ class Database:
     def __init__(self):
         self.db = _init_db()
 
+    def __del__(self):
+        self.db.close()
+
     def add_note(self, title, desc, filepath):
         sql = "INSERT INTO APPNOTES (title,description,filepath) VALUES (?,?,?)"
         args = (title, desc, filepath)
